@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ichiji</string>
+    <string name="widget_small_name">Today\'s character</string>
+    <string name="widget_small_desc">Today\'s character and its reading. A dot shows until today is done.</string>
+    <string name="widget_board_name">Kana board</string>
+    <string name="widget_board_desc">The whole kana chart, filling in as you learn.</string>
+</resources>
