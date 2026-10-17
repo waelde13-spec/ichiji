@@ -25,7 +25,7 @@ HIRA = [
     ("め","me","め","me","eye"),("も","mo","もり","mori","forest"),
     ("や","ya","やま","yama","mountain"),("ゆ","yu","ゆき","yuki","snow"),("よ","yo","よる","yoru","night"),
     ("ら","ra","さくら","sakura","cherry blossom"),("り","ri","りす","risu","squirrel"),("る","ru","はる","haru","spring"),
-    ("れ","re","これ","kore","this"),("ろ","ro","いろ","iro","colour"),
+    ("れ","re","これ","kore","this"),("ろ","ro","いろ","iro","color"),
     ("わ","wa","わたし","watashi","I, me"),("を","o","みずを のむ","mizu o nomu","drink water (を marks the object)"),
     ("ん","n","ほん","hon","book"),
 ]
@@ -44,10 +44,10 @@ KATA = [
     ("ヘ","he","ヘリコプター","herikoputā","helicopter"),("ホ","ho","ホテル","hoteru","hotel"),
     ("マ","ma","マスク","masuku","mask"),("ミ","mi","ミルク","miruku","milk"),("ム","mu","ゲーム","gēmu","game"),
     ("メ","me","メニュー","menyū","menu"),("モ","mo","メモ","memo","memo"),
-    ("ヤ","ya","タイヤ","taiya","tyre"),("ユ","yu","ユーモア","yūmoa","humour"),("ヨ","yo","ヨーグルト","yōguruto","yoghurt"),
+    ("ヤ","ya","タイヤ","taiya","tire"),("ユ","yu","ユーモア","yūmoa","humor"),("ヨ","yo","ヨーグルト","yōguruto","yogurt"),
     ("ラ","ra","ラジオ","rajio","radio"),("リ","ri","リモコン","rimokon","remote control"),("ル","ru","ルール","rūru","rule"),
     ("レ","re","レモン","remon","lemon"),("ロ","ro","ロボット","robotto","robot"),
-    ("ワ","wa","ワイン","wain","wine"),("ヲ","o","ヲ","o","rare: kept for stylised text"),
+    ("ワ","wa","ワイン","wain","wine"),("ヲ","o","ヲ","o","rare: kept for stylized text"),
     ("ン","n","パン","pan","bread"),
 ]
 HIRA_NOTES = {"を": "Pronounced o. Used almost only as the object particle.",
@@ -58,7 +58,7 @@ KATA_NOTES = {"シ": "Strokes rise from the bottom left. Compare ツ, whose stro
               "ツ": "Strokes fall from the top. Compare シ.",
               "ソ": "The long stroke falls from the top right. Compare ン.",
               "ン": "The long stroke rises from the bottom left. Compare ソ.",
-              "ヲ": "Almost never used. Learn to recognise it and move on."}
+              "ヲ": "Almost never used. Learn to recognize it and move on."}
 
 RULES = [
     ("が","g-row","ga gi gu ge go","Two dots (dakuten) on the か row make a g sound.","ごはん","gohan","rice, a meal","が"),

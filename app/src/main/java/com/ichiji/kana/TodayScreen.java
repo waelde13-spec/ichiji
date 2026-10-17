@@ -142,7 +142,7 @@ final class TodayScreen extends Screen {
         subline.setPadding(0, Ui.dp(c, 6), 0, Ui.dp(c, 16));
         box.addView(subline, Ui.lp(Ui.MATCH, Ui.WRAP));
 
-        box.addView(Ui.button(c, p, learned ? "Practise it again" : "Learn it", learned ? Ui.SECONDARY : Ui.PRIMARY,
+        box.addView(Ui.button(c, p, learned ? "Practice it again" : "Learn it", learned ? Ui.SECONDARY : Ui.PRIMARY,
                 v -> a.push(new SheetScreen(a, card, !learned))));
         return box;
     }

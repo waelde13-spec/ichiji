@@ -12,7 +12,7 @@ import java.util.Locale;
 import java.util.Set;
 
 /**
- * Draws both home-screen widgets as bitmaps, so the three colourways and the
+ * Draws both home-screen widgets as bitmaps, so the three color styles and the
  * serif Japanese glyphs look the same on every launcher.
  */
 final class WidgetArt {

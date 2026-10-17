@@ -21,7 +21,7 @@ into words, then kanji built from parts you already know.
   chart shaded by how well each character is held.
 - **Widgets.** A small one (today's character, its reading, a red dot until today is done)
   and a wide kana board that fills in as you learn (today's character ringed, sealed ones
-  inverted). Three colourways: 藍 Indigo, 紙 Paper, 夜 Night. Updates just after midnight.
+  inverted). Three color styles: 藍 Indigo, 紙 Paper, 夜 Night. Updates just after midnight.
 - **Lock screen card.** Android phones don't allow lock-screen widgets, so Ichiji uses a
   silent notification card instead. Turn it off in Settings if you'd rather not.
 - **Course:** 46 hiragana, 46 katakana, 14 sound-rule cards, then 33 kanji in three levels
@@ -77,7 +77,7 @@ KanjiVG checkout: `python3 tools/build_data.py path/to/kanjivg/kanji`.
 - Audio uses the phone's text-to-speech. If nothing plays, install a Japanese voice
   (Settings ▸ Voice in the app links straight there).
 
-## Licences
+## Licenses
 
 Stroke-order data: [KanjiVG](http://kanjivg.tagaini.net) © Ulrich Apel, CC BY-SA 3.0.
-`app/src/main/assets/strokes.json` is a converted subset and is shared under the same licence.
+`app/src/main/assets/strokes.json` is a converted subset and is shared under the same license.

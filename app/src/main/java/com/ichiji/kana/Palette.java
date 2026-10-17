@@ -3,7 +3,7 @@ package com.ichiji.kana;
 import android.content.Context;
 import android.content.res.Configuration;
 
-/** App colours. Paper by day, night by night; indigo is the one accent, vermilion only for seals. */
+/** App colors. Paper by day, night by night; indigo is the one accent, vermilion only for seals. */
 final class Palette {
     final boolean dark;
     final int bg, surface, ink, muted, line, accent, accentSoft, onAccent, seal, good, warn, bad;

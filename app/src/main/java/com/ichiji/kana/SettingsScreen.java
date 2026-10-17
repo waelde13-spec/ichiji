@@ -100,7 +100,7 @@ final class SettingsScreen extends Screen {
 
         // Widgets
         section(page, "Home screen widgets", "Long-press your home screen, tap Widgets, and find Ichiji. There's a small one for today's character and a wide kana board.");
-        page.addView(Ui.label(c, "Colour", p.muted));
+        page.addView(Ui.label(c, "Color", p.muted));
         page.addView(Ui.gap(c, 6));
         page.addView(Ui.segmented(c, p, new String[]{"藍 Indigo", "紙 Paper", "夜 Night"}, store.widgetTheme, i -> {
             store.widgetTheme = i;
@@ -131,7 +131,7 @@ final class SettingsScreen extends Screen {
         // About
         section(page, "About", null);
         TextView about = Ui.text(c, "Ichiji 一字 · one character a day.\n\nStroke order data from KanjiVG, © Ulrich Apel, "
-                + "licensed CC BY-SA 3.0 (kanjivg.tagaini.net). Converted for this app and shared under the same licence.", 13.5f, p.muted);
+                + "licensed CC BY-SA 3.0 (kanjivg.tagaini.net). Converted for this app and shared under the same license.", 13.5f, p.muted);
         page.addView(about);
     }
 
