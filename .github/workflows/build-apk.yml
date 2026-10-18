@@ -28,8 +28,8 @@ jobs:
         run: |
           chmod +x gradlew
           export VERSION_CODE=$((10 + GITHUB_RUN_NUMBER))
-          ./gradlew assembleDebug --no-daemon --stacktrace
-          cp app/build/outputs/apk/debug/app-debug.apk Ichiji.apk
+          ./gradlew assembleRelease --no-daemon --stacktrace
+          cp app/build/outputs/apk/release/app-release.apk Ichiji.apk
 
       - name: Keep the APK with this run
         uses: actions/upload-artifact@v4

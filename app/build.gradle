@@ -12,7 +12,7 @@ android {
         targetSdk 36
         // Builds on GitHub set VERSION_CODE so every build counts up, as Google Play requires.
         versionCode((System.getenv('VERSION_CODE') ?: '3') as Integer)
-        versionName '1.1.1'
+        versionName '1.1.2'
     }
 
     // The upload key for Google Play is NOT in this repo. The release build on GitHub
@@ -42,8 +42,13 @@ android {
             signingConfig signingConfigs.shared
         }
         release {
-            minifyEnabled false
-            signingConfig uploadStore ? signingConfigs.upload : null
+            // R8 shrinks and optimizes the code; names are kept so crash reports stay readable.
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Google Play builds use the upload key. Test builds of the same release
+            // code are signed with the throwaway key so they install on your phone.
+            signingConfig uploadStore ? signingConfigs.upload : signingConfigs.shared
         }
     }
 
