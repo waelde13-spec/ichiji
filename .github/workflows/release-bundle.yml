@@ -1,0 +1,68 @@
+name: Release for Google Play
+
+# Run this by hand: Actions tab > "Release for Google Play" > Run workflow.
+# It builds a signed .aab and puts it in a private draft release for you to download.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Load the upload key
+        env:
+          KEYSTORE_B64: ${{ secrets.ICHIJI_UPLOAD_KEYSTORE }}
+          PASSWORD: ${{ secrets.ICHIJI_UPLOAD_PASSWORD }}
+        run: |
+          if [ -z "$KEYSTORE_B64" ] || [ -z "$PASSWORD" ]; then
+            echo "::error::Add the ICHIJI_UPLOAD_KEYSTORE and ICHIJI_UPLOAD_PASSWORD repository secrets first (see README)."
+            exit 1
+          fi
+          echo "$KEYSTORE_B64" | tr -d ' \r\n' | base64 -d > "$RUNNER_TEMP/upload.jks"
+          keytool -list -keystore "$RUNNER_TEMP/upload.jks" -storepass "$PASSWORD" -alias upload > /dev/null \
+            || { echo "::error::The upload key or its password is wrong."; exit 1; }
+
+      - name: Build the signed bundle
+        env:
+          ICHIJI_UPLOAD_STORE: ${{ runner.temp }}/upload.jks
+          ICHIJI_UPLOAD_PASSWORD: ${{ secrets.ICHIJI_UPLOAD_PASSWORD }}
+        run: |
+          chmod +x gradlew
+          export VERSION_CODE=$((100 + GITHUB_RUN_NUMBER))
+          echo "Version code: $VERSION_CODE"
+          ./gradlew bundleRelease --no-daemon --stacktrace
+          cp app/build/outputs/bundle/release/app-release.aab Ichiji-release.aab
+          jarsigner -verify Ichiji-release.aab | grep -q "jar verified" \
+            || { echo "::error::The bundle is not signed."; exit 1; }
+          echo "VERSION_CODE=$VERSION_CODE" >> "$GITHUB_ENV"
+
+      - name: Remove the key file
+        if: always()
+        run: rm -f "$RUNNER_TEMP/upload.jks"
+
+      - name: Keep the bundle with this run
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ichiji-release-aab
+          path: Ichiji-release.aab
+
+      - name: Put it in a private draft release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: play-${{ env.VERSION_CODE }}
+          name: Google Play upload ${{ env.VERSION_CODE }}
+          body: Upload Ichiji-release.aab to Google Play Console. This draft is only visible to you.
+          files: Ichiji-release.aab
+          draft: true

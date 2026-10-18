@@ -42,6 +42,28 @@ The project includes a GitHub Actions workflow that builds the app in the cloud 
    Android will ask you to allow installs from your browser; allow it once.
 5. Every new push builds a new release that installs over the old one, keeping your progress.
 
+## Publishing on Google Play
+
+Google Play needs a signed **.aab** (not the test APK). The upload key is kept out of this
+public repo; GitHub reads it from two repository secrets.
+
+One-time setup (Settings ▸ Secrets and variables ▸ Actions ▸ New repository secret):
+
+| Name | Value |
+|---|---|
+| `ICHIJI_UPLOAD_KEYSTORE` | the whole contents of `ICHIJI_UPLOAD_KEYSTORE.txt` |
+| `ICHIJI_UPLOAD_PASSWORD` | the upload key password |
+
+Each release: **Actions ▸ Release for Google Play ▸ Run workflow**. In about 5 minutes the
+signed `Ichiji-release.aab` is in a draft under **Releases** (only you can see drafts).
+Upload it in Play Console. Every run gets a higher version code automatically.
+
+Keep `ichiji-upload-key.jks` and its password backed up somewhere safe (a password manager
+plus a second copy). With Play App Signing, Google holds the real app-signing key; if the
+upload key is ever lost, it can be reset from Play Console, but that takes a few days.
+
+Privacy policy for the store listing: https://waelde13-spec.github.io/ichiji/privacy/
+
 ## Or build it in Android Studio
 
 Open this folder in Android Studio (Ladybug or newer), let Gradle sync, plug in a phone with
@@ -52,7 +74,7 @@ USB debugging on, and press Run. Command line: `./gradlew assembleDebug`
 
 Plain Java on the Android framework, **zero third-party libraries**: every screen is built in
 code, the charts, stroke animation, tracing, heatmap and widgets are custom-drawn.
-minSdk 26 (Android 8), targetSdk 35 (Android 15).
+minSdk 26 (Android 8), targetSdk 36 (Android 16).
 
 ```
 app/src/main/java/com/ichiji/kana/
@@ -73,8 +95,8 @@ KanjiVG checkout: `python3 tools/build_data.py path/to/kanjivg/kanji`.
 
 ## Notes
 
-- The signing key in `app/` is a throwaway debug key so updates install over each other.
-  Make your own release key before publishing anywhere.
+- The signing key in `app/` is a throwaway debug key so test builds install over each other.
+  It is never used for Google Play builds.
 - Audio uses the phone's text-to-speech. If nothing plays, install a Japanese voice
   (Settings ▸ Voice in the app links straight there).
 

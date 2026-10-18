@@ -4,24 +4,36 @@ plugins {
 
 android {
     namespace 'com.ichiji.kana'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId 'com.ichiji.kana'
         minSdk 26
-        targetSdk 35
-        versionCode 3
-        versionName '1.0.2'
+        targetSdk 36
+        // Builds on GitHub set VERSION_CODE so every build counts up, as Google Play requires.
+        versionCode((System.getenv('VERSION_CODE') ?: '3') as Integer)
+        versionName '1.1.0'
     }
 
-    // A fixed signing key, so a newer build installs over an older one on your phone.
-    // It's a debug key: fine for your own phone, not for publishing on Google Play.
+    // The upload key for Google Play is NOT in this repo. The release build on GitHub
+    // reads it from two repository secrets (see README, "Publishing on Google Play").
+    def uploadStore = System.getenv('ICHIJI_UPLOAD_STORE')
+
     signingConfigs {
+        // A throwaway key so test builds install over each other on your phone.
         shared {
             storeFile file('ichiji-debug.keystore')
             storePassword 'android'
             keyAlias 'ichiji'
             keyPassword 'android'
+        }
+        if (uploadStore) {
+            create('upload') {
+                storeFile file(uploadStore)
+                storePassword System.getenv('ICHIJI_UPLOAD_PASSWORD')
+                keyAlias 'upload'
+                keyPassword System.getenv('ICHIJI_UPLOAD_PASSWORD')
+            }
         }
     }
 
@@ -31,7 +43,7 @@ android {
         }
         release {
             minifyEnabled false
-            signingConfig signingConfigs.shared
+            signingConfig uploadStore ? signingConfigs.upload : null
         }
     }
 

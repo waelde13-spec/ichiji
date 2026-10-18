@@ -39,7 +39,9 @@ final class Widgets {
         rv.setImageViewBitmap(R.id.widget_image, bmp);
         Card f = store.featured();
         rv.setContentDescription(R.id.widget_image, f == null ? "Ichiji" : "Today: " + f.ch + ", " + f.answer());
-        Intent open = new Intent(c, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent open = new Intent(c, MainActivity.class)
+                .setAction(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pi = PendingIntent.getActivity(c, board ? 2 : 1, open, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
         rv.setOnClickPendingIntent(R.id.widget_image, pi);
         mgr.updateAppWidget(id, rv);

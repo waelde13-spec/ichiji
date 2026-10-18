@@ -3,6 +3,9 @@ name: Build APK
 on:
   push:
     branches: [main, master]
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
   workflow_dispatch:
 
 permissions:
@@ -24,6 +27,7 @@ jobs:
       - name: Build the app
         run: |
           chmod +x gradlew
+          export VERSION_CODE=$((10 + GITHUB_RUN_NUMBER))
           ./gradlew assembleDebug --no-daemon --stacktrace
           cp app/build/outputs/apk/debug/app-debug.apk Ichiji.apk
 
