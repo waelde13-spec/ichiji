@@ -85,7 +85,7 @@ final class Notifier {
         StringBuilder title = new StringBuilder();
         for (Card card : batch) if (!store.isLearned(card)) title.append(card.ch).append(' ');
         String t = title.length() > 0 ? "今日: " + title.toString().trim() : "Reviews are ready";
-        String text = due > 0 ? due + (due == 1 ? " review" : " reviews") + " waiting. Two minutes is enough." : "Today's character is waiting.";
+        String text = due > 0 ? due + (due == 1 ? " review" : " reviews") + " waiting. Just a couple of minutes." : "Today's character is waiting.";
         Notification n = new Notification.Builder(c, CH_REMIND)
                 .setSmallIcon(R.drawable.ic_stat)
                 .setContentTitle(t)

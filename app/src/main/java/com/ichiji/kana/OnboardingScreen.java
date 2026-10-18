@@ -74,9 +74,9 @@ final class OnboardingScreen extends Screen {
         page.addView(Ui.gap(c, 34));
         page.addView(Ui.jp(c, "Learn to read Japanese, one character a day.", 26, p.ink));
         page.addView(Ui.gap(c, 14));
-        page.addView(Ui.text(c, "Hiragana first, then katakana, then the sound rules that turn them into words, then kanji built "
-                + "from parts you already know.\n\nToday's character lives on your home screen and lock screen. Open the app "
-                + "to trace it, review, and watch the days add up. Two minutes is enough.", 16, p.muted));
+        page.addView(Ui.text(c, "Start with hiragana, move on to katakana and the rules for sounds, and finish with your first kanji, "
+                + "each made from simpler pieces you've met before.\n\nToday's character sits on your home screen, and on your "
+                + "lock screen if you like. Open the app to trace it, review, and see your progress. A couple of minutes a day goes a long way.", 16, p.muted));
         page.addView(Ui.gap(c, 36));
         page.addView(Ui.button(c, p, "Begin", Ui.PRIMARY, v -> next()));
     }
@@ -85,7 +85,7 @@ final class OnboardingScreen extends Screen {
         Context c = a;
         page.addView(Ui.jp(c, "What can you already read?", 26, p.ink));
         page.addView(Ui.gap(c, 8));
-        page.addView(Ui.text(c, "Tap the ones you know. Tap a row letter for the whole row. They start as known and get a light check in two weeks.", 14.5f, p.muted));
+        page.addView(Ui.text(c, "Tap the ones you know, or tap a row letter for the whole row. They count as known, and you'll get a quick check on them in about two weeks.", 14.5f, p.muted));
         page.addView(Ui.gap(c, 16));
         page.addView(Ui.segmented(c, p, new String[]{"ひらがな Hiragana", "カタカナ Katakana"}, script, i -> {
             script = i;
@@ -130,9 +130,9 @@ final class OnboardingScreen extends Screen {
         page.addView(Ui.gap(c, 8));
         page.addView(Ui.text(c, "You can change this any time. Miss a day and nothing piles up: the next character just waits.", 14.5f, p.muted));
         page.addView(Ui.gap(c, 18));
-        String[][] opts = {{"1", "Light", "One new character a day. The kana take about three and a half months."},
-                {"3", "Steady", "Three a day. Kana in about five weeks."},
-                {"5", "Eager", "Five a day. Kana in about three weeks, with more to review."}};
+        String[][] opts = {{"1", "ゆっくり · Easygoing", "One new character a day. The kana take about three and a half months."},
+                {"3", "ふつう · Regular", "Three a day. Kana in about five weeks."},
+                {"5", "はやい · Fast", "Five a day. Kana in about three weeks, with more to review."}};
         for (String[] o : opts) {
             int v = Integer.parseInt(o[0]);
             boolean on = pace == v;

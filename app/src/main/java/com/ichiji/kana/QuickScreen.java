@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-/** Quick Practice: ten fast questions from any deck, for a spare minute. Doesn't touch the schedule. */
+/** Drills: ten fast questions from any deck, for a spare minute. Doesn't touch the schedule. */
 final class QuickScreen extends Screen {
     private static final String[][] DECKS = {
             {"あ", "Hiragana", Card.HIRA}, {"ア", "Katakana", Card.KATA},
@@ -62,7 +62,7 @@ final class QuickScreen extends Screen {
     private void buildMenu(FrameLayout host) {
         Context c = a;
         LinearLayout page = Ui.page(c, host);
-        page.addView(Ui.label(c, "Quick practice", p.muted));
+        page.addView(Ui.label(c, "Drills", p.muted));
         TextView title = Ui.jp(c, "練習", 34, p.ink);
         title.setPadding(0, Ui.dp(c, 6), 0, Ui.dp(c, 4));
         page.addView(title);

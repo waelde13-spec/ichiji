@@ -38,7 +38,7 @@ final class SettingsScreen extends Screen {
         // Pace
         section(page, "Pace", "New characters a day. Missed days never pile up.");
         int paceIdx = store.pace >= 5 ? 2 : store.pace >= 3 ? 1 : 0;
-        page.addView(Ui.segmented(c, p, new String[]{"Light · 1", "Steady · 3", "Eager · 5"}, paceIdx, i -> {
+        page.addView(Ui.segmented(c, p, new String[]{"1 a day", "3 a day", "5 a day"}, paceIdx, i -> {
             store.pace = i == 0 ? 1 : i == 1 ? 3 : 5;
             store.save();
         }));

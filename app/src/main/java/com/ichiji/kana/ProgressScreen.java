@@ -73,7 +73,7 @@ final class ProgressScreen extends Screen {
 
         // Stages
         LinearLayout stages = Ui.card(c, p);
-        stages.addView(Ui.label(c, "Seed to sealed", p.muted));
+        stages.addView(Ui.label(c, "New moon to full moon", p.muted));
         stages.addView(Ui.gap(c, 10));
         LinearLayout srow = Ui.row(c);
         int[] counts = store.stageCounts();
@@ -87,7 +87,7 @@ final class ProgressScreen extends Screen {
             srow.addView(col, Ui.weight(1));
         }
         stages.addView(srow);
-        TextView expl = Ui.text(c, "Every review that sticks pushes a character further out. Sealed means it holds for two months or more.", 13, p.muted);
+        TextView expl = Ui.text(c, "Every review that sticks pushes a character further out. Full moon (望) means it holds for two months or more.", 13, p.muted);
         expl.setPadding(0, Ui.dp(c, 12), 0, 0);
         stages.addView(expl);
         page.addView(stages);

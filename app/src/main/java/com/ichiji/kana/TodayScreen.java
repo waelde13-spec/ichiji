@@ -86,7 +86,7 @@ final class TodayScreen extends Screen {
             revText.addView(Ui.text(c, tomorrow > 0 ? tomorrow + " come back tomorrow." : "Nothing scheduled for tomorrow yet.", 14, p.muted));
         } else {
             revText.addView(Ui.medium(c, due.size() + " waiting", 20, p.ink));
-            revText.addView(Ui.text(c, "Recall each one with the answer hidden.", 14, p.muted));
+            revText.addView(Ui.text(c, "Say each one out loud before you reveal it.", 14, p.muted));
         }
         revRow.addView(revText, Ui.weight(1));
         TextView mark = Ui.jp(c, "復", 40, due.isEmpty() ? Palette.alpha(p.muted, 0.5f) : p.accent);

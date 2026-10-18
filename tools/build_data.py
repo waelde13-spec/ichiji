@@ -83,7 +83,7 @@ KANJI = [
  [1,"二","に","ni","two",[],"Two strokes stacked, the lower one longer: two.","二月","nigatsu","February"],
  [1,"三","さん","san","three",[],"Three strokes, three.","三月","sangatsu","March"],
  [1,"口","くち","kuchi","mouth",[],"An open mouth, seen head on: a square.","口","kuchi","mouth"],
- [1,"日","ひ","hi","sun, day",["口","一"],"A mouth (口) with one (一) line across it, the sun.","あさ日","asahi","the morning sun"],
+ [1,"日","ひ","hi","sun, day",["口","一"],"A square frame (口) cut through by a line (一): the sun, drawn square because brushes don't do circles well.","あさ日","asahi","the morning sun"],
  [1,"月","つき","tsuki","moon, month",[],"A crescent with two bands of light: the moon.","三日月","mikazuki","crescent moon"],
  [1,"目","め","me","eye",["日","一"],"The sun (日) with one more line: an eye turned on its side.","目","me","eye"],
  [1,"木","き","ki","tree",[],"A trunk, branches across the top, roots spreading below.","木","ki","tree"],

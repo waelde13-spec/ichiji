@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/** One batch of reviews: recall with the answer hidden, then say how it went. */
+/** One batch of reviews: try to recall it first, then reveal and grade yourself. */
 final class ReviewScreen extends Screen {
     private final List<Card> queue;
     private final Set<String> requeued = new HashSet<>();

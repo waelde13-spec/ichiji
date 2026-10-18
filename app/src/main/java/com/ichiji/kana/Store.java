@@ -27,7 +27,7 @@ import java.util.TreeMap;
  */
 public final class Store {
     public static final int KANA_TOTAL = 106;
-    public static final int KANJI_UNLOCK = 96;
+    public static final int KANJI_UNLOCK = 100;
 
     private static Store instance;
 
@@ -278,7 +278,7 @@ public final class Store {
         commit();
     }
 
-    /** Placement: what the learner already reads starts as known, with a light check two weeks in. */
+    /** Placement: what the learner already reads counts as known, with a quick check in about two weeks. */
     public synchronized void markKnown(Collection<String> ids) {
         long t = today();
         int i = 0;
@@ -292,7 +292,7 @@ public final class Store {
 
     // ---------------------------------------------------------------- reviews
 
-    /** Everything due today or earlier, freshest first. */
+    /** Everything due today or earlier, newest first. */
     public synchronized List<Card> dueReviews() {
         long t = today();
         List<Card> out = new ArrayList<>();

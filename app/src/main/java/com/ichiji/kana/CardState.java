@@ -6,8 +6,8 @@ import org.json.JSONObject;
 /** Where one card stands in the learner's memory. Days are epoch days (LocalDate.toEpochDay). */
 public final class CardState {
     public static final int SEED = 0, SPROUT = 1, BLOOM = 2, SEALED = 3;
-    public static final String[] STAGE_NAMES = {"Seed", "Sprout", "Bloom", "Sealed"};
-    public static final String[] STAGE_KANJI = {"種", "芽", "花", "印"};
+    public static final String[] STAGE_NAMES = {"New moon", "Crescent", "Half moon", "Full moon"};
+    public static final String[] STAGE_KANJI = {"朔", "眉", "弦", "望"};
 
     public double s, d;
     public long due, last, learned;
