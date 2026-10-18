@@ -27,6 +27,7 @@ into words, then kanji built from parts you already know.
 - **Course:** 46 hiragana, 46 katakana, 14 sound-rule cards, then 33 kanji in three levels
   (unlocks once 96 of the 106 kana have passed a review).
 - **Private.** No account, no internet permission, no tracking. Everything stays on the phone.
+  Privacy policy: https://waelde13-spec.github.io/ichiji/privacy/ (source in `docs/privacy/`).
 
 ## Get the APK onto your phone (no computer setup needed)
 

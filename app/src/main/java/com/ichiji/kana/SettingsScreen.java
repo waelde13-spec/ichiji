@@ -2,6 +2,8 @@ package com.ichiji.kana;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -13,6 +15,8 @@ import java.time.format.FormatStyle;
 
 /** Pace, reminders, appearance, widgets, voice, and the reset switch. */
 final class SettingsScreen extends Screen {
+    static final String PRIVACY_URL = "https://waelde13-spec.github.io/ichiji/privacy/";
+
     SettingsScreen(MainActivity a) { super(a); }
 
     @Override boolean isTab() { return true; }
@@ -126,6 +130,8 @@ final class SettingsScreen extends Screen {
 
         // Data
         section(page, "Your data", "Everything stays in this app on this phone. No account, no servers, no tracking.");
+        page.addView(Ui.button(c, p, "Privacy policy", Ui.SECONDARY, v -> openPrivacy()));
+        page.addView(Ui.gap(c, 8));
         page.addView(Ui.button(c, p, "Start over", Ui.SECONDARY, v -> confirmReset()));
 
         // About
@@ -145,6 +151,14 @@ final class SettingsScreen extends Screen {
             page.addView(h);
         }
         page.addView(Ui.gap(c, 10));
+    }
+
+    private void openPrivacy() {
+        try {
+            a.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PRIVACY_URL)));
+        } catch (Exception e) {
+            Ui.toast(a, PRIVACY_URL);
+        }
     }
 
     private void confirmReset() {
